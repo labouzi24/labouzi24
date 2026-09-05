@@ -2,8 +2,8 @@
   "name": "mecasouk",
   "short_name": "mecasouk",
   "description": "سوق يجمع أفضل البائعين لكل ماركات وموديلات السيارات",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/labouzi24/",
+  "scope": "/labouzi24/",
   "display": "standalone",
   "orientation": "portrait",
   "dir": "rtl",
@@ -12,13 +12,13 @@
   "theme_color": "#1E5FFF",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "/labouzi24/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/labouzi24/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

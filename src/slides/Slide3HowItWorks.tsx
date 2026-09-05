@@ -1,12 +1,7 @@
 import { motion } from "motion/react";
 import type { ReactElement } from "react";
-
-type Step = {
-  number: string;
-  title: string;
-  description: string;
-  icon: (props: { className?: string }) => ReactElement;
-};
+import { stepNumbers } from "../data/mockData";
+import { useTranslations } from "../i18n/I18nContext";
 
 function BrandIcon({ className }: { className?: string }) {
   return (
@@ -52,25 +47,12 @@ function PartIcon({ className }: { className?: string }) {
   );
 }
 
-const STEPS: Step[] = [
-  {
-    number: "١",
-    title: "اختر الماركة",
-    description: "حدد ماركة سيارتك من قائمة تضم جميع الماركات الشائعة.",
-    icon: BrandIcon,
-  },
-  {
-    number: "٢",
-    title: "اختر الموديل",
-    description: "اختر الموديل وسنة الصنع لتحديد المواصفات بدقة.",
-    icon: ModelIcon,
-  },
-  {
-    number: "٣",
-    title: "اختر القطعة",
-    description: "تصفح القطع المتوافقة من عدة بائعين وقارن الأسعار.",
-    icon: PartIcon,
-  },
+// Icons are presentational and stay local; titles/descriptions come from
+// the i18n translations, numbers from the mock data layer.
+const STEP_ICONS: Array<(props: { className?: string }) => ReactElement> = [
+  BrandIcon,
+  ModelIcon,
+  PartIcon,
 ];
 
 const containerVariants = {
@@ -90,14 +72,19 @@ type Slide3Props = {
 };
 
 export default function Slide3HowItWorks({ isActive }: Slide3Props) {
+  const t = useTranslations();
+  const steps = t.slide3.steps.map((step, index) => ({
+    ...step,
+    number: stepNumbers[index],
+    Icon: STEP_ICONS[index],
+  }));
+
   return (
     <div className="h-full w-full overflow-y-auto bg-black">
       <div className="flex min-h-full flex-col items-center justify-center px-6 py-20 sm:px-16">
         <div className="mb-12 text-center">
-          <span className="text-sm font-semibold text-brand">كيف يعمل الموقع</span>
-          <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-4xl">
-            ثلاث خطوات بسيطة للوصول إلى قطعتك
-          </h2>
+          <span className="text-sm font-semibold text-brand">{t.slide3.eyebrow}</span>
+          <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-4xl">{t.slide3.headline}</h2>
         </div>
 
         <motion.div
@@ -106,7 +93,7 @@ export default function Slide3HowItWorks({ isActive }: Slide3Props) {
           animate={isActive ? "visible" : "hidden"}
           className="flex w-full max-w-5xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0"
         >
-          {STEPS.map((step) => (
+          {steps.map((step) => (
             <motion.div
               key={step.title}
               variants={cardVariants}
@@ -114,7 +101,7 @@ export default function Slide3HowItWorks({ isActive }: Slide3Props) {
             >
               <span className="mb-3 text-sm font-bold text-white/30 sm:mb-4">{step.number}</span>
               <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand sm:mb-4 sm:h-14 sm:w-14">
-                <step.icon className="h-6 w-6 sm:h-7 sm:w-7" />
+                <step.Icon className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
               <h3 className="text-lg font-bold text-white">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60">{step.description}</p>

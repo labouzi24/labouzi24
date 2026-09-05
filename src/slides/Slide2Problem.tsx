@@ -1,3 +1,5 @@
+import { useTranslations } from "../i18n/I18nContext";
+
 function SearchConfusionIcon() {
   return (
     <svg viewBox="0 0 200 200" className="h-40 w-40 sm:h-56 sm:w-56" aria-hidden="true">
@@ -19,19 +21,17 @@ function SearchConfusionIcon() {
 }
 
 export default function Slide2Problem() {
+  const t = useTranslations();
+
   return (
     <div className="h-full w-full overflow-y-auto bg-black">
       <div className="flex min-h-full flex-col items-center justify-center gap-10 px-6 pt-16 pb-24 sm:flex-row sm:gap-16 sm:px-20 sm:py-0">
         <div className="max-w-lg text-center sm:text-right">
-          <span className="text-sm font-semibold text-brand">المشكلة</span>
+          <span className="text-sm font-semibold text-brand">{t.slide2.eyebrow}</span>
           <h2 className="mt-3 text-2xl font-extrabold leading-snug text-white sm:text-4xl">
-            إيجاد القطعة الصحيحة أصبح مضيعة للوقت
+            {t.slide2.headline}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-white/60 sm:text-lg">
-            البحث عن قطعة الغيار المتوافقة مع سيارتك غالبًا ما يكون بطيئًا ومربكًا،
-            بين عشرات البائعين المتفرقين ومصادر غير موثوقة، دون طريقة سهلة للمقارنة
-            والتأكد من التوافق.
-          </p>
+          <p className="mt-4 text-base leading-relaxed text-white/60 sm:text-lg">{t.slide2.body}</p>
         </div>
         <div className="flex shrink-0 items-center justify-center">
           <SearchConfusionIcon />

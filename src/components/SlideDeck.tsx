@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import Slide from "./Slide";
 import Header from "./Header";
+import SkipButton from "./SkipButton";
+import ProgressBar from "./ProgressBar";
 import NavDots from "./NavDots";
 import NavArrows from "./NavArrows";
 import Slide1Hero from "../slides/Slide1Hero";
@@ -40,6 +42,8 @@ export default function SlideDeck() {
 
   return (
     <div dir="rtl" className="relative h-dvh w-full overflow-hidden bg-black font-['Cairo',sans-serif]">
+      <ProgressBar activeIndex={activeIndex} count={SLIDE_COUNT} />
+      <SkipButton />
       <Header />
 
       <Slide isActive={activeIndex === 0}>

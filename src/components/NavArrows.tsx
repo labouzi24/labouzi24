@@ -1,3 +1,5 @@
+import { useTranslations } from "../i18n/I18nContext";
+
 function ChevronLeftIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
@@ -27,15 +29,17 @@ const arrowClass =
   "fixed top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-brand sm:flex";
 
 export default function NavArrows({ isFirst, isLast, onNext, onPrev }: NavArrowsProps) {
+  const t = useTranslations();
+
   return (
     <>
       {!isLast && (
-        <button type="button" aria-label="الشريحة التالية" onClick={onNext} className={[arrowClass, "left-4"].join(" ")}>
+        <button type="button" aria-label={t.nav.next} onClick={onNext} className={[arrowClass, "left-4"].join(" ")}>
           <ChevronLeftIcon />
         </button>
       )}
       {!isFirst && (
-        <button type="button" aria-label="الشريحة السابقة" onClick={onPrev} className={[arrowClass, "right-4"].join(" ")}>
+        <button type="button" aria-label={t.nav.prev} onClick={onPrev} className={[arrowClass, "right-4"].join(" ")}>
           <ChevronRightIcon />
         </button>
       )}

@@ -1,3 +1,5 @@
+import { formatMessage, useTranslations } from "../i18n/I18nContext";
+
 type NavDotsProps = {
   count: number;
   activeIndex: number;
@@ -5,6 +7,8 @@ type NavDotsProps = {
 };
 
 export default function NavDots({ count, activeIndex, onSelect }: NavDotsProps) {
+  const t = useTranslations();
+
   return (
     <div className="fixed bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
       {Array.from({ length: count }).map((_, index) => {
@@ -13,7 +17,7 @@ export default function NavDots({ count, activeIndex, onSelect }: NavDotsProps) 
           <button
             key={index}
             type="button"
-            aria-label={`الانتقال إلى الشريحة ${index + 1}`}
+            aria-label={formatMessage(t.nav.dotLabel, { index: index + 1 })}
             aria-current={isActive}
             onClick={() => onSelect(index)}
             className="group flex h-11 w-11 items-center justify-center"

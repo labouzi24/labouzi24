@@ -1,4 +1,5 @@
 import logoMark from "../assets/logo.png";
+import { useTranslations } from "../i18n/I18nContext";
 
 type LogoProps = {
   size?: "sm" | "lg";
@@ -7,6 +8,7 @@ type LogoProps = {
 };
 
 export default function Logo({ size = "sm", fixed = true, className = "" }: LogoProps) {
+  const t = useTranslations();
   const isLarge = size === "lg";
 
   return (
@@ -23,7 +25,7 @@ export default function Logo({ size = "sm", fixed = true, className = "" }: Logo
           isLarge ? "h-16 w-16 rounded-2xl" : "h-8 w-8",
         ].join(" ")}
       >
-        <img src={logoMark} alt="mecasouk" className="h-full w-full object-cover" />
+        <img src={logoMark} alt={t.logo.word} className="h-full w-full object-cover" />
       </div>
       <div className="flex flex-col items-start leading-tight">
         <span
@@ -33,7 +35,7 @@ export default function Logo({ size = "sm", fixed = true, className = "" }: Logo
           ].join(" ")}
           dir="ltr"
         >
-          mecasouk
+          {t.logo.word}
         </span>
         <span
           className={[
@@ -41,7 +43,7 @@ export default function Logo({ size = "sm", fixed = true, className = "" }: Logo
             isLarge ? "text-sm" : "text-[10px]",
           ].join(" ")}
         >
-          سوق قطع غيار السيارات
+          {t.logo.subtitle}
         </span>
       </div>
     </div>

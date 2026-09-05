@@ -1,17 +1,5 @@
-type Vendor = {
-  name: string;
-  rating: string;
-  delivery: string;
-};
-
-const VENDORS: Vendor[] = [
-  { name: "مؤسسة الخليج لقطع الغيار", rating: "٤.٨", delivery: "توصيل خلال يوم" },
-  { name: "متجر الأمانة للسيارات", rating: "٤.٦", delivery: "توصيل خلال يومين" },
-  { name: "معرض النخبة لقطع الغيار", rating: "٤.٩", delivery: "توصيل خلال يوم" },
-  { name: "بيت القطعة الأصلية", rating: "٤.٧", delivery: "توصيل خلال ٣ أيام" },
-  { name: "الوفاء لقطع غيار السيارات", rating: "٤.٥", delivery: "توصيل خلال يومين" },
-  { name: "متجر السرعة", rating: "٤.٨", delivery: "توصيل خلال يوم" },
-];
+import { vendors } from "../data/mockData";
+import { useTranslations } from "../i18n/I18nContext";
 
 function StarIcon() {
   return (
@@ -22,18 +10,18 @@ function StarIcon() {
 }
 
 export default function Slide4Vendors() {
+  const t = useTranslations();
+
   return (
     <div className="h-full w-full overflow-y-auto bg-black">
       <div className="flex min-h-full flex-col items-center justify-center px-6 py-16 sm:px-16">
         <div className="mb-10 text-center">
-          <span className="text-sm font-semibold text-brand">شبكة البائعين</span>
-          <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-4xl">
-            بائعون موثوقون، أسعار متنافسة
-          </h2>
+          <span className="text-sm font-semibold text-brand">{t.slide4.eyebrow}</span>
+          <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-4xl">{t.slide4.headline}</h2>
         </div>
 
         <div className="grid w-full max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-          {VENDORS.map((vendor) => (
+          {vendors.map((vendor) => (
             <div
               key={vendor.name}
               className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 p-3 text-right sm:gap-3 sm:p-5"

@@ -46,5 +46,31 @@
     "dotLabel": "الانتقال إلى الشريحة {index}",
     "next": "الشريحة التالية",
     "prev": "الشريحة السابقة"
+  },
+  "ad": {
+    "placeholder": "مساحة إعلانية"
+  },
+  "aiAssistant": {
+    "label": "مساعد الذكاء الاصطناعي",
+    "comingSoon": "هذه الميزة قريبًا — سيتمكن المساعد من مساعدتك في إيجاد القطعة الصحيحة."
+  },
+  "choose": {
+    "breadcrumbHome": "الرئيسية",
+    "breadcrumbChooseBrand": "اختر الماركة",
+    "searchPlaceholder": "ابحث عن ماركة، أو أدخل الرقم المرجعي للقطعة",
+    "searchHint": "اكتب اسم الماركة لتصفية القائمة، أو الرقم المرجعي مباشرة للانتقال إلى العروض",
+    "continueFrom": "متابعة من: {brand} {model}",
+    "modelsTitle": "اختر موديل {brand}",
+    "loadingOffers": "جاري تجهيز العروض المتوافقة...",
+    "noResults": "لا توجد نتائج مطابقة"
+  },
+  "offers": {
+    "breadcrumbOffers": "العروض المتاحة",
+    "disclaimer": "قد تختلف الأرقام المرجعية حسب الصانع — تأكد من الرقم المطابق لسيارتك",
+    "compatibleWith": "متوافقة مع {brand} {model} {years}",
+    "referenceLabel": "الرقم المرجعي",
+    "contactVendor": "تواصل مع البائع",
+    "backToBrands": "عودة لاختيار ماركة أخرى",
+    "referenceResultTitle": "نتائج البحث بالرقم المرجعي: {ref}"
   }
 }

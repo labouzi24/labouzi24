@@ -14,9 +14,8 @@ export default function Slide5CTA() {
           {t.slide5.headline}
         </h2>
 
-        {/* TODO: point this at the brand-selection route once it's merged into this project. */}
         <Link
-          to="#"
+          to="/choisir"
           className="flex min-h-11 items-center rounded-full bg-brand px-8 py-3 text-base font-bold text-white shadow-[0_0_30px_rgba(30,95,255,0.35)] transition-transform duration-200 hover:scale-105 sm:text-lg"
         >
           {t.slide5.cta}

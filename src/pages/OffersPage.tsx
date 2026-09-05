@@ -109,7 +109,7 @@ export default function OffersPage() {
   return (
     <div dir="rtl" className="min-h-dvh w-full bg-[#0B0B0D] font-['Cairo',sans-serif] text-white">
       <Header />
-      <div className="mx-auto flex max-w-2xl flex-col gap-6 px-6 pb-32 pt-24 sm:px-10">
+      <div className="mx-auto flex max-w-2xl flex-col gap-6 px-6 pb-32 pt-[calc(var(--beta-banner-h,0px)+6rem)] sm:px-10">
         <Breadcrumb items={breadcrumbItems} />
         <AdBanner />
 

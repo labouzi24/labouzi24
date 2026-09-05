@@ -8,11 +8,13 @@ import VendorPage from "./pages/VendorPage";
 import LegalPage from "./pages/LegalPage";
 import AboutPage from "./pages/AboutPage";
 import ScrollToHash from "./components/ScrollToHash";
+import BetaBanner from "./components/BetaBanner";
 
 export default function App() {
   return (
     <AuthProvider>
       <I18nProvider>
+        <BetaBanner />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <ScrollToHash />
           <Routes>

@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { TouchEvent as ReactTouchEvent } from "react";
 import Slide from "./Slide";
 import Header from "./Header";
 import SkipButton from "./SkipButton";
@@ -40,8 +41,32 @@ export default function SlideDeck() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [next, prev]);
 
+  const touchStartX = useRef<number | null>(null);
+  const SWIPE_THRESHOLD = 50;
+
+  function handleTouchStart(event: ReactTouchEvent) {
+    touchStartX.current = event.touches[0].clientX;
+  }
+
+  function handleTouchEnd(event: ReactTouchEvent) {
+    if (touchStartX.current === null) return;
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+
+    if (deltaX > SWIPE_THRESHOLD) {
+      next();
+    } else if (deltaX < -SWIPE_THRESHOLD) {
+      prev();
+    }
+  }
+
   return (
-    <div dir="rtl" className="relative h-dvh w-full overflow-hidden bg-black font-['Cairo',sans-serif]">
+    <div
+      dir="rtl"
+      className="relative h-dvh w-full overflow-hidden bg-black font-['Cairo',sans-serif]"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <ProgressBar activeIndex={activeIndex} count={SLIDE_COUNT} />
       <SkipButton />
       <Header />

@@ -13,7 +13,7 @@ export default function LegalPage() {
   return (
     <div dir="rtl" className="min-h-dvh w-full bg-[#0B0B0D] font-['Cairo',sans-serif] text-white">
       <Header />
-      <div className="mx-auto flex max-w-2xl flex-col gap-8 px-6 pb-24 pt-24 sm:px-10">
+      <div className="mx-auto flex max-w-2xl flex-col gap-8 px-6 pb-24 pt-[calc(var(--beta-banner-h,0px)+6rem)] sm:px-10">
         <div className="text-center">
           <span className="text-sm font-semibold text-brand">{t.legal.eyebrow}</span>
           <h1 className="mt-3 text-2xl font-extrabold leading-snug text-white sm:text-4xl">

@@ -7,7 +7,8 @@ export default function SkipButton() {
   return (
     <Link
       to="/choisir"
-      className="fixed top-4 left-4 z-30 text-xs font-semibold text-white/50 transition-colors duration-200 hover:text-white"
+      className="fixed left-4 z-30 text-xs font-semibold text-white/50 transition-colors duration-200 hover:text-white"
+      style={{ top: "calc(var(--beta-banner-h, 0px) + 1rem)" }}
     >
       {t.header.skip}
     </Link>

@@ -7,7 +7,10 @@ export default function Header() {
   const t = useTranslations();
 
   return (
-    <div className="fixed top-4 right-4 z-30 flex items-center gap-3">
+    <div
+      className="fixed right-4 z-30 flex items-center gap-3"
+      style={{ top: "calc(var(--beta-banner-h, 0px) + 1rem)" }}
+    >
       <Logo fixed={false} />
       <button
         type="button"

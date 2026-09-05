@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import Slide from "./Slide";
-import Logo from "./Logo";
+import Header from "./Header";
 import NavDots from "./NavDots";
+import NavArrows from "./NavArrows";
 import Slide1Hero from "../slides/Slide1Hero";
 import Slide2Problem from "../slides/Slide2Problem";
 import Slide3HowItWorks from "../slides/Slide3HowItWorks";
@@ -39,7 +40,7 @@ export default function SlideDeck() {
 
   return (
     <div dir="rtl" className="relative h-dvh w-full overflow-hidden bg-black font-['Cairo',sans-serif]">
-      <Logo />
+      <Header />
 
       <Slide isActive={activeIndex === 0}>
         <Slide1Hero />
@@ -57,6 +58,12 @@ export default function SlideDeck() {
         <Slide5CTA />
       </Slide>
 
+      <NavArrows
+        isFirst={activeIndex === 0}
+        isLast={activeIndex === SLIDE_COUNT - 1}
+        onNext={next}
+        onPrev={prev}
+      />
       <NavDots count={SLIDE_COUNT} activeIndex={activeIndex} onSelect={goTo} />
     </div>
   );

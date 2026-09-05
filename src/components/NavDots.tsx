@@ -16,11 +16,15 @@ export default function NavDots({ count, activeIndex, onSelect }: NavDotsProps) 
             aria-label={`الانتقال إلى الشريحة ${index + 1}`}
             aria-current={isActive}
             onClick={() => onSelect(index)}
-            className={[
-              "rounded-full transition-all duration-300",
-              isActive ? "h-2 w-6 bg-brand" : "h-2 w-2 bg-white/40 hover:bg-white/60",
-            ].join(" ")}
-          />
+            className="group flex h-11 w-11 items-center justify-center"
+          >
+            <span
+              className={[
+                "rounded-full transition-all duration-300",
+                isActive ? "h-2 w-6 bg-brand" : "h-2 w-2 bg-white/40 group-hover:bg-white/60",
+              ].join(" ")}
+            />
+          </button>
         );
       })}
     </div>

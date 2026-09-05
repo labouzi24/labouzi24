@@ -91,35 +91,37 @@ type Slide3Props = {
 
 export default function Slide3HowItWorks({ isActive }: Slide3Props) {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center bg-black px-6 py-20 sm:px-16">
-      <div className="mb-12 text-center">
-        <span className="text-sm font-semibold text-brand">كيف يعمل الموقع</span>
-        <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-4xl">
-          ثلاث خطوات بسيطة للوصول إلى قطعتك
-        </h2>
-      </div>
+    <div className="h-full w-full overflow-y-auto bg-black">
+      <div className="flex min-h-full flex-col items-center justify-center px-6 py-20 sm:px-16">
+        <div className="mb-12 text-center">
+          <span className="text-sm font-semibold text-brand">كيف يعمل الموقع</span>
+          <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-4xl">
+            ثلاث خطوات بسيطة للوصول إلى قطعتك
+          </h2>
+        </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isActive ? "visible" : "hidden"}
-        className="grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3"
-      >
-        {STEPS.map((step) => (
-          <motion.div
-            key={step.title}
-            variants={cardVariants}
-            className="flex flex-col items-center rounded-2xl border border-white/10 bg-white/5 px-6 py-8 text-center"
-          >
-            <span className="mb-4 text-sm font-bold text-white/30">{step.number}</span>
-            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand/10 text-brand">
-              <step.icon className="h-7 w-7" />
-            </div>
-            <h3 className="text-lg font-bold text-white">{step.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/60">{step.description}</p>
-          </motion.div>
-        ))}
-      </motion.div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isActive ? "visible" : "hidden"}
+          className="flex w-full max-w-5xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0"
+        >
+          {STEPS.map((step) => (
+            <motion.div
+              key={step.title}
+              variants={cardVariants}
+              className="flex w-[78%] shrink-0 snap-center flex-col items-center rounded-2xl border border-white/10 bg-white/5 px-6 py-6 text-center sm:w-auto sm:py-8"
+            >
+              <span className="mb-3 text-sm font-bold text-white/30 sm:mb-4">{step.number}</span>
+              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand sm:mb-4 sm:h-14 sm:w-14">
+                <step.icon className="h-6 w-6 sm:h-7 sm:w-7" />
+              </div>
+              <h3 className="text-lg font-bold text-white">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">{step.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }

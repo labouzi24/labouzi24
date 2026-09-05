@@ -1,8 +1,7 @@
 import useHls from "../hooks/useHls";
 
-// Replace with the real Mux playback URL, e.g.
-// `https://stream.mux.com/${PLAYBACK_ID}.m3u8`
-const HERO_VIDEO_SRC = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
+// Mux playback ID: wt6DQITOnWO2ixVCPWrFACbz9W2ioLQTUEadGzD3KdBc
+const HERO_VIDEO_SRC = "https://stream.mux.com/wt6DQITOnWO2ixVCPWrFACbz9W2ioLQTUEadGzD3KdBc.m3u8";
 
 export default function Slide1Hero() {
   const videoRef = useHls(HERO_VIDEO_SRC);

@@ -20,20 +20,22 @@ function SearchConfusionIcon() {
 
 export default function Slide2Problem() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-10 bg-black px-6 sm:flex-row sm:gap-16 sm:px-20">
-      <div className="max-w-lg text-center sm:text-right">
-        <span className="text-sm font-semibold text-brand">المشكلة</span>
-        <h2 className="mt-3 text-2xl font-extrabold leading-snug text-white sm:text-4xl">
-          إيجاد القطعة الصحيحة أصبح مضيعة للوقت
-        </h2>
-        <p className="mt-4 text-base leading-relaxed text-white/60 sm:text-lg">
-          البحث عن قطعة الغيار المتوافقة مع سيارتك غالبًا ما يكون بطيئًا ومربكًا،
-          بين عشرات البائعين المتفرقين ومصادر غير موثوقة، دون طريقة سهلة للمقارنة
-          والتأكد من التوافق.
-        </p>
-      </div>
-      <div className="flex shrink-0 items-center justify-center">
-        <SearchConfusionIcon />
+    <div className="h-full w-full overflow-y-auto bg-black">
+      <div className="flex min-h-full flex-col items-center justify-center gap-10 px-6 pt-16 pb-24 sm:flex-row sm:gap-16 sm:px-20 sm:py-0">
+        <div className="max-w-lg text-center sm:text-right">
+          <span className="text-sm font-semibold text-brand">المشكلة</span>
+          <h2 className="mt-3 text-2xl font-extrabold leading-snug text-white sm:text-4xl">
+            إيجاد القطعة الصحيحة أصبح مضيعة للوقت
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-white/60 sm:text-lg">
+            البحث عن قطعة الغيار المتوافقة مع سيارتك غالبًا ما يكون بطيئًا ومربكًا،
+            بين عشرات البائعين المتفرقين ومصادر غير موثوقة، دون طريقة سهلة للمقارنة
+            والتأكد من التوافق.
+          </p>
+        </div>
+        <div className="flex shrink-0 items-center justify-center">
+          <SearchConfusionIcon />
+        </div>
       </div>
     </div>
   );

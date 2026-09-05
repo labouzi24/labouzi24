@@ -42,6 +42,15 @@ export default function Slide4Vendors() {
             </div>
           ))}
         </div>
+
+        <div className="mt-10 grid w-full max-w-2xl grid-cols-3 gap-4 border-t border-white/10 pt-8">
+          {t.slide4.stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-xl font-extrabold text-brand sm:text-2xl">{stat.value}</div>
+              <div className="mt-1 text-[11px] text-white/50 sm:text-xs">{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

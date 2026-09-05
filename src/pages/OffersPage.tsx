@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import type { ReactElement } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
 import AIChatButton from "../components/AIChatButton";
 import Breadcrumb from "../components/Breadcrumb";
@@ -54,6 +55,29 @@ function BackIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
       <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function VerifiedIcon() {
+  return (
+    <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+      <path d="M10 1.7l2.1 1.2 2.4-.3 1 2.2 2.2 1-.3 2.4 1.2 2.1-1.2 2.1.3 2.4-2.2 1-1 2.2-2.4-.3-2.1 1.2-2.1-1.2-2.4.3-1-2.2-2.2-1 .3-2.4-1.2-2.1 1.2-2.1-.3-2.4 2.2-1 1-2.2 2.4.3L10 1.7z" />
+      <path d="M7 10l2 2 4-4" stroke="#0B0B0D" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+  );
+}
+
+function ShieldCheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
+      <path
+        d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -113,6 +137,15 @@ export default function OffersPage() {
                     <span className="font-bold text-white">{offer.vendorName}</span>
                     <span className="font-extrabold text-brand">{offer.price} ر.س</span>
                   </div>
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-white/50">
+                    <span>{t.offers.sellerTypes[offer.sellerType]}</span>
+                    {offer.isVerified && (
+                      <span className="flex items-center gap-1 rounded-full bg-brand/10 px-2 py-0.5 text-[11px] font-semibold text-brand">
+                        <VerifiedIcon />
+                        {t.offers.verifiedBadge}
+                      </span>
+                    )}
+                  </div>
                   <span className="text-xs text-white/40">
                     {t.offers.referenceLabel}: {offer.referenceNumber}
                   </span>
@@ -139,7 +172,14 @@ export default function OffersPage() {
             );
           })}
         </div>
+
+        <div className="flex items-center justify-center gap-2 text-xs text-white/50">
+          <ShieldCheckIcon />
+          {t.offers.returnGuarantee}
+        </div>
       </div>
+
+      <Footer />
 
       <div className="fixed bottom-6 right-4 z-30 sm:right-6">
         <Link

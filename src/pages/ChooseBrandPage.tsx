@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
 import AIChatButton from "../components/AIChatButton";
 import Breadcrumb from "../components/Breadcrumb";
-import { brands, modelsByBrand } from "../data/mockData";
+import { brands, getBrandStats, modelsByBrand } from "../data/mockData";
 import { formatMessage, useTranslations } from "../i18n/I18nContext";
 
 const STORAGE_KEY = "mecasouk:lastSelection";
@@ -155,21 +156,30 @@ export default function ChooseBrandPage() {
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {filteredBrands.map((brand) => {
                 const isActive = brand.id === selectedBrandId;
+                const stats = getBrandStats(brand.id);
                 return (
                   <button
                     key={brand.id}
                     type="button"
                     onClick={() => setSelectedBrandId(brand.id)}
                     className={[
-                      "flex h-16 items-center justify-between overflow-hidden rounded-lg border-2 bg-white/5 pr-4 transition-colors sm:h-20",
+                      "flex h-20 items-center justify-between overflow-hidden rounded-lg border-2 bg-white/5 pr-4 transition-colors sm:h-24",
                       isActive ? "border-brand" : "border-white/15 hover:border-white/30",
                     ].join(" ")}
                   >
-                    <span
-                      dir="ltr"
-                      className="truncate text-sm font-extrabold uppercase tracking-wide text-white sm:text-base"
-                    >
-                      {brand.name}
+                    <span className="flex min-w-0 flex-1 flex-col items-start gap-0.5">
+                      <span
+                        dir="ltr"
+                        className="text-right text-xs font-extrabold uppercase leading-tight tracking-wide text-white sm:text-base"
+                      >
+                        {brand.name}
+                      </span>
+                      <span className="truncate text-[11px] text-white/40 sm:text-xs">
+                        {formatMessage(t.choose.brandStats, {
+                          parts: stats.partsCount,
+                          vendors: stats.vendorsCount,
+                        })}
+                      </span>
                     </span>
                     <span className="flex h-full items-center bg-brand px-3 text-white">
                       <CarPlateIcon className="h-5 w-5" />
@@ -205,6 +215,7 @@ export default function ChooseBrandPage() {
         )}
       </div>
 
+      <Footer />
       <AIChatButton />
     </div>
   );
